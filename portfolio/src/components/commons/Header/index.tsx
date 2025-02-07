@@ -22,34 +22,31 @@ export const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`${roboto.className} text-sm flex py-3 px-5 justify-between items-center sticky top-0 z-20`}
+    <div
+      className={`${roboto.className} text-sm flex py-3 px-5 justify-between items-center sticky top-0 z-50 bg-gradient-to-r from-[#1e1b6b] via-[#4b0076] to-[#1e1b6b] animate-gradient`}
     >
       <Link href="/">
-        <Image src="/favicon.ico" width={55} height={55} alt="" />
+        <Image src="/favicon.ico" width={55} height={55} alt="Logo" />
       </Link>
       <button className="p-1 md:hidden" onClick={openMenu}>
         <MenuIcon className="fill-white w-10 h-10" />
       </button>
-      <nav className="hidden md:flex items-center gap-10 text-lg mr-8">
-  <Link
-    href="/"
-    className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
-  >
-    Sobre mim
-  </Link>
-  {/* <Link href="/portfolio" className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline">
-    Portfolio
-  </Link> */}
-  <Link
-    href="/contatos"
-    className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
-  >
-    Entre em contato
-  </Link>
-</nav>
+      <nav className="md:flex items-center gap-10 text-lg mr-8">
+        <Link
+          href="/"
+          className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
+        >
+          Sobre mim
+        </Link>
+        <Link
+          href="/contatos"
+          className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
+        >
+          Entre em contato
+        </Link>
+      </nav>
 
       <Menu isVisible={isMenuOpen} onClose={closeMenu} />
-    </header>
+    </div>
   );
 };

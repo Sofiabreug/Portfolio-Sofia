@@ -18,13 +18,13 @@ export const Layout = ({ children }: LayoutProps) => {
       className={`flex flex-col min-h-screen ${jetbrains_mono.className}`}
     >
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow  bg-gradient-to-r from-[#1e1b6b] via-[#4b0076] to-[#1e1b6b] animate-gradient">{children}</main>
       <Footer />
     </div>
   );
 };
 
-// Componente Footer atualizado
+
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white text-center p-4 mt-8">
@@ -32,7 +32,7 @@ const Footer = () => {
         © {new Date().getFullYear()} Sofia | Todos os direitos reservados.
       </p>
       <div className="flex justify-center gap-4 mt-2">
-        {/* Ícone do GitHub */}
+       
         <a
           href="https://github.com/"
           target="_blank"
@@ -42,7 +42,7 @@ const Footer = () => {
           <FaGithub />
         </a>
 
-        {/* Ícone do LinkedIn */}
+      
         <a
           href="https://linkedin.com/"
           target="_blank"
@@ -52,7 +52,7 @@ const Footer = () => {
           <FaLinkedin />
         </a>
 
-        {/* Ícone do E-mail */}
+       
         <a
           href="mailto:seuemail@exemplo.com"
           className="hover:text-purple-400 transition-all duration-300 text-2xl"

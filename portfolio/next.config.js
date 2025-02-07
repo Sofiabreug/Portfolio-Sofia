@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'i.imgur.com',
+        hostname: 'i.imgur.com', // Imagens do Imgur
         port: '',
         pathname: '**',
       },

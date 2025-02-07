@@ -11,28 +11,46 @@ export const Menu = ({ isVisible, onClose }: MenuProps) => {
   return (
     <div
       className={`${isVisible ? 'flex' : 'hidden'}
-      fixed inset-0 w-full h-full bg-black bg-opacity-40 backdrop-blur-sm md:hidden
-    `}
+        fixed inset-0 w-full h-full bg-black bg-opacity-40 backdrop-blur-sm md:hidden
+        transition-opacity duration-300 ease-in-out
+      `}
       onClick={onClose}
     >
       <div
-        className="w-full bg-h-blue-900 h-96 shadow-md py-4 px-5"
+        className="w-full bg-h-blue-900/95 h-96 shadow-lg py-4 px-5
+          transform transition-transform duration-300 ease-in-out
+          ${isVisible ? 'translate-x-0' : '-translate-x-full'}
+        "
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between mb-5">
           <Link href="/">
-            <Image src="/favicon.svg" width={55} height={55} alt="Ícone da letra H" />
+            <Image 
+              src="/favicon.svg" 
+              width={55} 
+              height={55} 
+              alt="Ícone da letra H" 
+              className="hover:scale-105 transition-transform duration-200"
+            />
           </Link>
-          <button onClick={onClose}>
+          <button onClick={onClose} className="hover:opacity-80 transition-opacity duration-200">
             <MenuCloseIcon className="fill-white w-10 h-10" />
           </button>
         </div>
         <nav className="flex flex-col gap-5 text-xl p-5 items-center">
-          <Link href="/" onClick={onClose}>
+          <Link 
+            href="/" 
+            onClick={onClose}
+            className="text-white hover:text-blue-400 transition-colors duration-200"
+          >
             Sobre mim
           </Link>
           {/* <Link href="/portfolio" onClick={onClose}>Portfolio</Link> */}
-          <Link href="/contatos" onClick={onClose}>
+          <Link 
+            href="/contatos" 
+            onClick={onClose}
+            className="text-white hover:text-blue-400 transition-colors duration-200"
+          >
             Entre em contato
           </Link>
         </nav>

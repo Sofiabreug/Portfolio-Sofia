@@ -33,4 +33,13 @@ export interface Project {
   slug: string;
   name: string;
   image: Image;
+  technologies: string[];
+}
+
+interface ProjectDetails {
+  slug: string;
+  name: string;
+  description: string;
+  videoUrl: string;
+  technologies: string[];
 }

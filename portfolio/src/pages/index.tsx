@@ -18,12 +18,9 @@ const Home = ({ home }: HomeProps) => {
     <>
       <Head>
         <title>Sobre mim | Sofia</title>
-        <meta
-          name="description"
-          
-        />
+        <meta name="description" />
       </Head>
-      <div className="py-12 px-6 md:px-32 space-y-10 md:space-y-28">
+      <div className="py-12 px-6 md:px-32 space-y-10 md:space-y-28 min-h-screen bg-gradient-to-r from-[#1e1b6b] via-[#4b0076] to-[#1e1b6b] animate-gradient">
         <AboutMe aboutMe={aboutMe} />
         <Projects projects={projects} />
       </div>
@@ -33,7 +30,7 @@ const Home = ({ home }: HomeProps) => {
 
 const loadHome = async () => {
   const res = await fetch(
-    'https://gist.githubusercontent.com/Sofiabreug/22cc52d7ec446c566d4733ff64cdbfa5/raw/7bb92bad5d7d85305d72536d08b01acb8f7e6524/home.json',
+    'https://gist.githubusercontent.com/Sofiabreug/22cc52d7ec446c566d4733ff64cdbfa5/raw/5790fdc644a2dca4096c74f894866488159f01a8/home.json',
     {
       headers: {
         Authorization: 'Bearer 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',
@@ -44,7 +41,6 @@ const loadHome = async () => {
 
   return home;
 };
-
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const home = await loadHome();
