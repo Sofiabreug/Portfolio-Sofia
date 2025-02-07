@@ -1,4 +1,4 @@
-## 🎨 Meu Portfólio - Sofia Breug
+## 🎨 Meu Portfólio - Sofia Guimarães
 
 Bem-vindo ao repositório do meu portfólio! 🚀 Aqui, apresento um pouco sobre minha jornada na tecnologia, projetos desenvolvidos e habilidades técnicas.
 
