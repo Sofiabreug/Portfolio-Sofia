@@ -130,38 +130,41 @@ export const Projects = ({ projects }: ProjectsProps) => {
     <article className="space-y-16 flex flex-col items-center xl:items-start text-center xl:text-left text-white">
       <h2 className="text-3xl md:text-4xl font-bold tracking-wide text-white">Projetos Recentes</h2>
 
-      <ul className="grid gap-12 sm:grid-cols-2 xl:grid-cols-3 justify-center">
+      <ul className="grid gap-6 sm:gap-12 sm:grid-cols-2 xl:grid-cols-3 justify-center">
         {projects.map(({ slug, name, image, technologies }, index) => (
           <li
             key={slug}
-            className="group relative bg-gray-800 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 ease-in-out"
+            className="group relative bg-gray-800 rounded-2xl shadow-md hover:shadow-lg overflow-hidden transition-all duration-300 ease-in-out mx-4 sm:mx-0 max-w-xs sm:max-w-none"
           >
             <div className="relative overflow-hidden">
+              {/* Imagem - Mobile menor | Desktop mantém */}
               <Image
                 src={image.url}
                 alt={image.alt || `Imagem do projeto ${name}`}
                 width={600}
                 height={400}
                 quality={90}
-                className="object-cover h-60 w-full group-hover:scale-110 transition-transform duration-300"
+                className="object-cover h-48 sm:h-60 w-full group-hover:scale-110 transition-transform duration-300"
                 priority={index < 3}
               />
 
               <Link 
                 href={`/projects/${slug}`} 
-                className="absolute inset-0 bg-black/50 text-white text-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg"
+                className="absolute inset-0 bg-black/50 text-white text-base sm:text-lg font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                 aria-label={`Ver detalhes do projeto ${name}`}
               >
                 Ler Mais
               </Link>
             </div>
 
-            <div className="p-6 space-y-4 bg-black/80 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold text-white truncate" title={name}>
+            <div className="p-4 sm:p-6 space-y-4 bg-black/80 backdrop-blur-sm">
+              {/* Título - Texto menor no mobile */}
+              <h3 className="text-lg sm:text-xl font-semibold text-white truncate" title={name}>
                 {name}
               </h3>
 
-              <div className="flex gap-3 justify-center xl:justify-start text-2xl text-gray-300">
+              {/* Ícones - Tamanho reduzido apenas no mobile */}
+              <div className="flex gap-2 sm:gap-3 justify-center xl:justify-start text-xl sm:text-2xl text-gray-300">
                 {technologies.map((tech) => {
                   const techLower = tech.toLowerCase();
                   const techInfo = techConfig[techLower as keyof typeof techConfig];
@@ -173,7 +176,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                   return (
                     <div 
                       key={tech}
-                      className="p-2 rounded-full flex items-center justify-center"
+                      className="p-1.5 sm:p-2 rounded-full flex items-center justify-center"
                       style={{
                         backgroundColor: techInfo.bgcolor,
                       }}
@@ -181,7 +184,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     >
                       <Icon 
                         style={{ color: techInfo.color }} 
-                        className="text-2xl" 
+                        className="text-xl sm:text-2xl" 
                         title={tech}
                       />
                     </div>
@@ -189,15 +192,17 @@ export const Projects = ({ projects }: ProjectsProps) => {
                 })}
               </div>
 
+              {/* Botão - Texto e padding menores no mobile */}
               <Link
                 href={`/projects/${slug}`}
-                className="mt-4 px-6 py-3 text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full text-lg font-semibold shadow-lg hover:from-indigo-600 hover:to-purple-500 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
+                className="mt-4 px-4 py-2 sm:px-6 sm:py-3 text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full text-sm sm:text-lg font-semibold shadow-lg hover:from-indigo-600 hover:to-purple-500 transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center"
               >
                 Ver Detalhes
               </Link>
             </div>
 
-            <div className="bg-blue-500 rounded-full w-12 h-12 flex items-center justify-center text-white text-lg font-bold absolute top-4 left-4 shadow-lg z-10">
+            {/* Número - Menor no mobile */}
+            <div className="bg-blue-500 rounded-full w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center text-white text-sm sm:text-lg font-bold absolute top-2 sm:top-4 left-2 sm:left-4 shadow-lg">
               {index + 1}
             </div>
           </li>

@@ -34,7 +34,7 @@ const Footer = () => {
       <div className="flex justify-center gap-4 mt-2">
        
         <a
-          href="https://github.com/"
+          href="https://github.com/SofiAbreug"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-purple-400 transition-all duration-300 text-2xl"
@@ -44,7 +44,7 @@ const Footer = () => {
 
       
         <a
-          href="https://linkedin.com/"
+          href="https://www.linkedin.com/in/sofia-abreug/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-purple-400 transition-all duration-300 text-2xl"
@@ -54,7 +54,7 @@ const Footer = () => {
 
        
         <a
-          href="mailto:seuemail@exemplo.com"
+          href="mailto:sofia.abreu.guimaraes@gmail.com"
           className="hover:text-purple-400 transition-all duration-300 text-2xl"
         >
           <FaEnvelope />

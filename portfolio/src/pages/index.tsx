@@ -30,15 +30,14 @@ const Home = ({ home }: HomeProps) => {
 
 const loadHome = async () => {
   const res = await fetch(
-    'https://gist.githubusercontent.com/Sofiabreug/22cc52d7ec446c566d4733ff64cdbfa5/raw/5790fdc644a2dca4096c74f894866488159f01a8/home.json',
-    {
-      headers: {
-        Authorization: 'Bearer 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',
-      },
-    }
+    "https://gist.githubusercontent.com/Sofiabreug/22cc52d7ec446c566d4733ff64cdbfa5/raw/ca661a553b079e866e532d8f499f38fbb1a48d20/home.json"
   );
-  const home = await res.json();
+  
+  if (!res.ok) {
+    throw new Error('Failed to fetch home data');
+  }
 
+  const home = await res.json();
   return home;
 };
 

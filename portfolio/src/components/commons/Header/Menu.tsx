@@ -1,6 +1,7 @@
 import { MenuCloseIcon } from '@/components/icons/MenuCloseIcon';
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaUser, FaEnvelope, FaHome } from 'react-icons/fa';
 
 interface MenuProps {
   isVisible: boolean;
@@ -11,49 +12,92 @@ export const Menu = ({ isVisible, onClose }: MenuProps) => {
   return (
     <div
       className={`${isVisible ? 'flex' : 'hidden'}
-        fixed inset-0 w-full h-full bg-black bg-opacity-40 backdrop-blur-sm md:hidden
-        transition-opacity duration-300 ease-in-out
+        fixed inset-0 w-full h-full bg-black bg-opacity-60 backdrop-blur-lg md:hidden
+        justify-end transition-all duration-500 ease-in-out z-50
       `}
       onClick={onClose}
     >
       <div
-        className="w-full bg-h-blue-900/95 h-96 shadow-lg py-4 px-5
-          transform transition-transform duration-300 ease-in-out
-          ${isVisible ? 'translate-x-0' : '-translate-x-full'}
-        "
+        className={`w-[85%] max-w-md bg-gradient-to-b from-[#1e1b6b] to-[#4b0076] h-full shadow-xl py-6 px-6
+          transform transition-all duration-500 ease-out
+          ${isVisible ? 'translate-x-0' : 'translate-x-full'}
+          flex flex-col border-l border-purple-400/20
+          relative
+        `}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between mb-5">
-          <Link href="/">
+        {/* Header do menu */}
+        <div className="flex justify-between items-center mb-10">
+          <Link href="/" className="group">
             <Image 
-              src="/favicon.svg" 
-              width={55} 
-              height={55} 
-              alt="Ícone da letra H" 
-              className="hover:scale-105 transition-transform duration-200"
+              src="/favicon.ico" 
+              width={60} 
+              height={60} 
+              alt="Logo"
+              className="transition-transform duration-300 group-hover:scale-110 group-active:scale-95"
             />
           </Link>
-          <button onClick={onClose} className="hover:opacity-80 transition-opacity duration-200">
-            <MenuCloseIcon className="fill-white w-10 h-10" />
+          
+          <button 
+            onClick={onClose}
+            className="p-2 rounded-full bg-purple-900/30 hover:bg-purple-400/20 transition-all duration-300
+            border border-purple-400/20 hover:border-purple-400/40"
+          >
+            <MenuCloseIcon className="fill-white w-8 h-8 hover:rotate-90 transition-transform" />
           </button>
         </div>
-        <nav className="flex flex-col gap-5 text-xl p-5 items-center">
+
+        {/* Itens do menu */}
+        <nav className="flex flex-col gap-6 flex-1">
           <Link 
             href="/" 
             onClick={onClose}
-            className="text-white hover:text-blue-400 transition-colors duration-200"
+            className="group flex items-center gap-4 p-4 rounded-xl
+            bg-purple-900/10 hover:bg-purple-400/20
+            border border-transparent hover:border-purple-400/30
+            transition-all duration-300"
           >
-            Sobre mim
+            <div className="p-3 bg-purple-400/10 rounded-lg group-hover:bg-purple-400/20 transition">
+              <FaHome className="text-2xl text-purple-400" />
+            </div>
+            <span className="text-xl font-medium text-white/90">Início</span>
           </Link>
-          {/* <Link href="/portfolio" onClick={onClose}>Portfolio</Link> */}
+
+          <Link 
+            href="/" 
+            onClick={onClose}
+            className="group flex items-center gap-4 p-4 rounded-xl
+            bg-purple-900/10 hover:bg-purple-400/20
+            border border-transparent hover:border-purple-400/30
+            transition-all duration-300"
+          >
+            <div className="p-3 bg-purple-400/10 rounded-lg group-hover:bg-purple-400/20 transition">
+              <FaUser className="text-2xl text-purple-400" />
+            </div>
+            <span className="text-xl font-medium text-white/90">Sobre mim</span>
+          </Link>
+          
           <Link 
             href="/contatos" 
             onClick={onClose}
-            className="text-white hover:text-blue-400 transition-colors duration-200"
+            className="group flex items-center gap-4 p-4 rounded-xl
+            bg-purple-900/10 hover:bg-purple-400/20
+            border border-transparent hover:border-purple-400/30
+            transition-all duration-300"
           >
-            Entre em contato
+            <div className="p-3 bg-purple-400/10 rounded-lg group-hover:bg-purple-400/20 transition">
+              <FaEnvelope className="text-2xl text-purple-400" />
+            </div>
+            <span className="text-xl font-medium text-white/90">Contato</span>
           </Link>
         </nav>
+
+        {/* Footer do menu */}
+        <div className="mt-8 pt-6 border-t border-purple-400/10">
+          <p className="text-center text-white/60 text-sm">
+            © {new Date().getFullYear()} Sofia Breunig
+          </p>
+        </div>
       </div>
     </div>
   );

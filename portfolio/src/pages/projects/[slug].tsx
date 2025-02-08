@@ -120,7 +120,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(
-    "https://gist.githubusercontent.com/Sofiabreug/1b6552812af749f062ec78152c4a2b05/raw/5cc5423267ece483d8f0972a4c74a02f35593ca3/projects.json"
+    "https://gist.githubusercontent.com/Sofiabreug/1b6552812af749f062ec78152c4a2b05/raw/7e1d5a534f8e920ced3cda86754d793a5e300ab0/projects.json"
   );
   const projects: ProjectDetails[] = await res.json();
 
@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params!;
 
   const res = await fetch(
-    "https://gist.githubusercontent.com/Sofiabreug/1b6552812af749f062ec78152c4a2b05/raw/5cc5423267ece483d8f0972a4c74a02f35593ca3/projects.json"
+    "https://gist.githubusercontent.com/Sofiabreug/1b6552812af749f062ec78152c4a2b05/raw/7e1d5a534f8e920ced3cda86754d793a5e300ab0/projects.json"
   );
   const projects: ProjectDetails[] = await res.json();
 

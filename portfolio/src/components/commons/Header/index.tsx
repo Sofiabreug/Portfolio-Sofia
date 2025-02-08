@@ -26,26 +26,40 @@ export const Header = () => {
       className={`${roboto.className} text-sm flex py-3 px-5 justify-between items-center sticky top-0 z-50 bg-gradient-to-r from-[#1e1b6b] via-[#4b0076] to-[#1e1b6b] animate-gradient`}
     >
       <Link href="/">
-        <Image src="/favicon.ico" width={55} height={55} alt="Logo" />
+        <Image 
+          src="/favicon.ico" 
+          width={55} 
+          height={55} 
+          alt="Logo" 
+          className="hover:scale-105 transition-transform"
+        />
       </Link>
-      <button className="p-1 md:hidden" onClick={openMenu}>
+      
+      <button 
+        className="p-1 md:hidden hover:opacity-80 transition-opacity"
+        onClick={openMenu}
+        aria-label="Abrir menu"
+      >
         <MenuIcon className="fill-white w-10 h-10" />
       </button>
-      <nav className="md:flex items-center gap-10 text-lg mr-8">
+      
+      {/* Nav para desktop */}
+      <nav className="hidden md:flex items-center gap-10 text-lg mr-8">
         <Link
           href="/"
-          className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
+          className="text-white hover:text-purple-400 transition-colors duration-300 hover:underline"
         >
           Sobre mim
         </Link>
         <Link
           href="/contatos"
-          className="hover:text-purple-400 transition-all duration-300 ease-in-out hover:underline"
+          className="text-white hover:text-purple-400 transition-colors duration-300 hover:underline"
         >
           Entre em contato
         </Link>
       </nav>
 
+      {/* Menu mobile */}
       <Menu isVisible={isMenuOpen} onClose={closeMenu} />
     </div>
   );

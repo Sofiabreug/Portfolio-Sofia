@@ -14,40 +14,37 @@ const Contatos = ({ contacts }: ContatosProps) => {
   return (
     <>
       <Head>
-        <title className="bg-gradient-to-r from-[#1e1b6b] via-[#4b0076] to-[#1e1b6b] animate-gradient">Contatos | Sofia</title>
+        <title>Contatos | Sofia</title>
       </Head>
-      <main>
+      
+      <div className="mt-8 md:mt-24 space-y-6 md:space-y-16 px-4 md:px-32">
+        <h1 className="text-4xl md:text-7xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-300 bg-clip-text text-transparent animate-gradient">
+          Contatos
+        </h1>
         
-      </main>
-      <div className="mt-12 md:mt-24 space-y-8 md:space-y-16 px-6 md:px-32">
-        <h1 className="text-5xl md:text-7xl font-bold text-center text-white ">Contatos</h1>
-        <ul className="space-y-6 md:space-y-8">
+        <ul className="space-y-4 md:space-y-8">
           {contacts.map(({ link, name, isMail }, idx) => (
             <li
               key={name + idx}
-              className="flex items-center gap-4 p-4 bg-gray-800 rounded-xl shadow-lg hover:bg-gray-700 transition "
+              className="flex flex-col md:flex-row md:items-center gap-3 p-3 md:p-4 bg-gray-800/50 rounded-xl shadow-lg hover:bg-gray-700/30 transition-all duration-300"
             >
-             
-              <span className="text-xl text-white">{name}</span>
-              <div className="flex gap-3 items-center ">
-           
-                {isMail && (
-                  <FaEnvelope className="text-blue-500" />
-                )}
-                {name === "GitHub" && (
-                  <FaGithub className="text-gray-500" />
-                )}
-                {name === "LinkedIn" && (
-                  <FaLinkedin className="text-blue-600" />
-                )}
+              <div className="flex items-center gap-2">
+                {isMail && <FaEnvelope className="text-blue-400 text-xl" />}
+                {name === "GitHub" && <FaGithub className="text-gray-300 text-xl" />}
+                {name === "LinkedIn" && <FaLinkedin className="text-blue-500 text-xl" />}
+                <span className="text-lg md:text-xl text-white/90">{name}</span>
+              </div>
+
+              <div className="flex gap-2 items-center flex-wrap">
                 <a
                   href={isMail ? `mailto:${link}` : link}
                   target="_blank"
-                  className="text-sm md:text-lg text-slate-300 underline truncate "
+                  rel="noopener noreferrer"
+                  className="text-base md:text-lg text-slate-300 underline truncate break-all hover:text-purple-300 transition-colors"
                 >
                   {link}
                 </a>
-                {isMail && <CopyButton textToCopy={link} />}
+                {isMail && <CopyButton textToCopy={link}  />}
               </div>
             </li>
           ))}
@@ -57,14 +54,10 @@ const Contatos = ({ contacts }: ContatosProps) => {
   );
 };
 
+
 const loadContacts = async () => {
   const res = await fetch(
-    "https://gist.githubusercontent.com/Sofiabreug/8a5b709528a1ec36dffb753ed53c4cbc/raw/8fe32fc4204bb4531bf99fea6fa96b52229211f5/contact.json",
-    {
-      headers: {
-        Authorization: "Bearer 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",
-      },
-    }
+    "https://gist.githubusercontent.com/Sofiabreug/8a5b709528a1ec36dffb753ed53c4cbc/raw/8fe32fc4204bb4531bf99fea6fa96b52229211f5/contact.json"
   );
 
   if (!res.ok) {
@@ -75,6 +68,8 @@ const loadContacts = async () => {
   const data = await res.json();
   return data;
 };
+
+ 
 
 export const getServerSideProps = async () => {
   const contacts = await loadContacts();
