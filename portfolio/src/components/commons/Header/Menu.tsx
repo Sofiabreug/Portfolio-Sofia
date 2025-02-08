@@ -95,7 +95,7 @@ export const Menu = ({ isVisible, onClose }: MenuProps) => {
         {/* Footer do menu */}
         <div className="mt-8 pt-6 border-t border-purple-400/10">
           <p className="text-center text-white/60 text-sm">
-            © {new Date().getFullYear()} Sofia Breunig
+            © {new Date().getFullYear()} Sofia Abreu
           </p>
         </div>
       </div>
